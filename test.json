@@ -1,0 +1,26 @@
+{
+    "value": [
+        {
+            "caseID": 4733478,
+            "contractorID": 82441,
+            "caseType": "Building Residential - Addition",
+            "permitNumber": "CARA 2025055889",
+            "contractor": "KEYSTONE CUSTOM DECKS LLC",
+            "description": "Install 360 SF deck. Install a 35 SF patio extension and install a 14' x 16' roof over the patio. 5' side setbacks, 20' min. rear setbacks. not to be over any easements.",
+            "fullAddress": "1114 SUNNYMEADE DR",
+            "fraction": "",
+            "streetNumber": "1114",
+            "streetName": "SUNNYMEADE",
+            "city": "NASHVILLE",
+            "state": "TN",
+            "zip": "37216",
+            "status": "Issued",
+            "apn": "06115017000",
+            "projectName": "",
+            "permitName": "",
+            "dateIssued": "2026-06-15T17:11:18Z",
+            "dateAccepted": "2026-05-20T17:28:31Z",
+            "inspector": ""
+        }
+    ]
+}

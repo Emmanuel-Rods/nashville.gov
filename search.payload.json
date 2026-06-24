@@ -1,0 +1,354 @@
+{
+    "case": {
+        "permitNumber": "",
+        "licenseNumber": "",
+        "applicant": "",
+        "enteredDateFrom": "",
+        "enteredDateTo": "",
+        "statusCode": "OPEN:ISSUE:EXPIRED:DONE",
+        "permitType": "",
+        "searchType": "permit",
+        "issuedDateFrom": ""
+    },
+    "address": {
+        "number": "",
+        "prefix": "",
+        "streetName": "",
+        "type": "",
+        "postDir": ""
+    },
+    "property": {
+        "apn": ""
+    },
+    "total": 0,
+    "noResults": false,
+    "noQuery": true,
+    "searchList": [],
+    "results": [],
+    "searchText": "",
+    "searchType": "permit",
+    "sortInfo": {
+        "fields": [
+            "fullAddress",
+            "permitNumber"
+        ],
+        "directions": [
+            "ASC"
+        ]
+    },
+    "permitSortInfo": {
+        "fields": [
+            "DateIssued"
+        ],
+        "directions": [
+            "DESC"
+        ]
+    },
+    "accountSortInfo": {
+        "fields": [
+            "entered"
+        ],
+        "directions": [
+            "DESC"
+        ]
+    },
+    "alarmSortInfo": {
+        "fields": [
+            "expirationDate"
+        ],
+        "directions": [
+            "ASC"
+        ]
+    },
+    "parentSortInfo": {
+        "fields": [
+            "entered"
+        ],
+        "directions": [
+            "DESC"
+        ]
+    },
+    "advanced": {
+        "case": {
+            "permitNumber": "",
+            "licenseNumber": "",
+            "applicant": "",
+            "enteredDateFrom": "",
+            "enteredDateTo": "",
+            "statusCode": "OPEN:ISSUE:EXPIRED:DONE",
+            "permitType": "",
+            "searchType": "permit",
+            "issuedDateFrom": ""
+        },
+        "address": {
+            "number": "",
+            "prefix": "",
+            "streetName": "",
+            "type": "",
+            "postDir": ""
+        },
+        "property": {
+            "apn": ""
+        }
+    },
+    "keyfield": "id",
+    "cols": {
+        "permit": [
+            {
+                "field": "permitNumber",
+                "localeCode": "searchPermit",
+                "showXs": true
+            },
+            {
+                "field": "caseTypeCode",
+                "localeCode": "searchCaseType",
+                "showXs": true
+            },
+            {
+                "field": "fullAddress",
+                "localeCode": "searchAddress",
+                "showXs": true
+            },
+            {
+                "field": "permitName",
+                "localeCode": "searchPermitName"
+            },
+            {
+                "field": "contractor",
+                "localeCode": "searchContractor"
+            },
+            {
+                "field": "projectName",
+                "localeCode": "searchProject"
+            },
+            {
+                "field": "dateIssued",
+                "localeCode": "searchIssued",
+                "isDate": true
+            },
+            {
+                "field": "dateCompleted",
+                "localeCode": "searchCompleted",
+                "isDate": true
+            },
+            {
+                "field": "status",
+                "localeCode": "searchStatus"
+            }
+        ],
+        "rfs": [
+            {
+                "field": "permitNumber",
+                "localeCode": "searchRfs",
+                "showXs": true
+            },
+            {
+                "field": "caseTypeCode",
+                "localeCode": "searchCaseType",
+                "showXs": true
+            },
+            {
+                "field": "fullAddress",
+                "localeCode": "searchAddress",
+                "showXs": true
+            },
+            {
+                "field": "permitName",
+                "localeCode": "searchPermitName"
+            },
+            {
+                "field": "projectName",
+                "localeCode": "searchProject"
+            },
+            {
+                "field": "dateIssued",
+                "localeCode": "searchIssued",
+                "isDate": true
+            },
+            {
+                "field": "dateCompleted",
+                "localeCode": "searchCompleted",
+                "isDate": true
+            },
+            {
+                "field": "status",
+                "localeCode": "searchStatus"
+            }
+        ],
+        "license": [
+            {
+                "field": "permitNumber",
+                "localeCode": "searchLicense",
+                "showXs": true
+            },
+            {
+                "field": "caseTypeCode",
+                "localeCode": "searchCaseType",
+                "showXs": true
+            },
+            {
+                "field": "permitName",
+                "localeCode": "searchLicenseName"
+            },
+            {
+                "field": "dateIssued",
+                "localeCode": "searchIssued",
+                "isDate": true
+            },
+            {
+                "field": "status",
+                "localeCode": "searchStatus"
+            }
+        ],
+        "accountPermit": [
+            {
+                "field": "number",
+                "localeCode": "accountPermitNumber",
+                "showXs": true
+            },
+            {
+                "field": "licenseNumber",
+                "localeCode": "accountLicenseNumber",
+                "showXs": true
+            },
+            {
+                "field": "location",
+                "localeCode": "accountLocation",
+                "showXs": true
+            },
+            {
+                "field": "caseTypeCode",
+                "localeCode": "accountCaseType"
+            },
+            {
+                "field": "entered",
+                "localeCode": "accountStartDate",
+                "isDate": true
+            },
+            {
+                "field": "expireDate",
+                "localeCode": "accountExpDate",
+                "isDate": true
+            },
+            {
+                "field": "status",
+                "localeCode": "accountStatus"
+            }
+        ],
+        "accountAlarm": [
+            {
+                "field": "number",
+                "localeCode": "accountPermitNumber",
+                "showXs": true
+            },
+            {
+                "field": "caseTypeCode",
+                "localeCode": "accountCaseType",
+                "showXs": true
+            },
+            {
+                "field": "locationAddress",
+                "localeCode": "accountAddress",
+                "showXs": true
+            },
+            {
+                "field": "locationName",
+                "localeCode": "accountLocation"
+            },
+            {
+                "field": "expirationDate",
+                "localeCode": "accountExpDate",
+                "isDate": true
+            },
+            {
+                "field": "statusCode",
+                "localeCode": "accountStatus"
+            }
+        ],
+        "parentSelect": [
+            {
+                "field": "number",
+                "localeCode": "accountPermitNumber",
+                "showXs": true
+            },
+            {
+                "field": "caseTypeCode",
+                "localeCode": "childCaseType",
+                "showXs": true
+            },
+            {
+                "field": "fullAddress",
+                "localeCode": "childAddress",
+                "showXs": true
+            },
+            {
+                "field": "ownerName",
+                "localeCode": "childOwner"
+            },
+            {
+                "field": "contractor",
+                "localeCode": "childContractor"
+            },
+            {
+                "field": "status",
+                "localeCode": "childStatus"
+            }
+        ],
+        "masterSelect": [
+            {
+                "field": "number",
+                "localeCode": "accountPermitNumber",
+                "showXs": true
+            },
+            {
+                "field": "caseTypeCode",
+                "localeCode": "childCaseType",
+                "showXs": true
+            },
+            {
+                "field": "fullAddress",
+                "localeCode": "childAddress",
+                "showXs": true
+            },
+            {
+                "field": "entered",
+                "localeCode": "permitSumEnter",
+                "showXs": false
+            },
+            {
+                "field": "status",
+                "localeCode": "childStatus",
+                "showXs": false
+            },
+            {
+                "field": "amount",
+                "localeCode": "permitFeeAmount",
+                "showXs": false
+            }
+        ],
+        "masterSelectSmall": [
+            {
+                "field": "number",
+                "localeCode": "accountPermitNumber",
+                "showXs": true
+            },
+            {
+                "field": "caseTypeCode",
+                "localeCode": "childCaseType",
+                "showXs": true
+            },
+            {
+                "field": "fullAddress",
+                "localeCode": "childAddress",
+                "showXs": true
+            }
+        ]
+    },
+    "page": 1,
+    "searchCode": "PRMT",
+    "orderby": "&$orderby= fullAddress ASC,permitNumber ASC",
+    "skip": 0,
+    "top": 20,
+    "advSearch": true,
+    "searchKey": ""
+}
