@@ -3,12 +3,12 @@
         "permitNumber": "",
         "licenseNumber": "",
         "applicant": "",
-        "enteredDateFrom": "",
-        "enteredDateTo": "",
+        "enteredDateFrom": null,
+        "enteredDateTo": null,
         "statusCode": "OPEN:ISSUE:EXPIRED:DONE",
         "permitType": "",
         "searchType": "permit",
-        "issuedDateFrom": ""
+        "issuedDateFrom": null
     },
     "address": {
         "number": "",
@@ -73,12 +73,12 @@
             "permitNumber": "",
             "licenseNumber": "",
             "applicant": "",
-            "enteredDateFrom": "",
-            "enteredDateTo": "",
+            "enteredDateFrom": null,
+            "enteredDateTo": null,
             "statusCode": "OPEN:ISSUE:EXPIRED:DONE",
             "permitType": "",
             "searchType": "permit",
-            "issuedDateFrom": ""
+            "issuedDateFrom": null
         },
         "address": {
             "number": "",
