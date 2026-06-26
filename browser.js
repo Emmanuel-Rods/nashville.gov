@@ -19,6 +19,9 @@ async function getCloudflareCookies(baselink) {
 
   const REFRESH_COUNT = 1;
   const collectedPasscodes = [];
+  //time out increase
+  await page.setDefaultTimeout(60000);
+  await page.setDefaultNavigationTimeout(60000);
 
   for (let i = 0; i < REFRESH_COUNT; i++) {
     console.log(`Starting attempt ${i + 1} of ${REFRESH_COUNT}...`);
