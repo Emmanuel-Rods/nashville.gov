@@ -8,7 +8,8 @@
         "statusCode": "OPEN:ISSUE:EXPIRED:DONE",
         "permitType": "",
         "searchType": "permit",
-        "issuedDateFrom": null
+        "issuedDateFrom": null,
+        "issuedDateTo": null
     },
     "address": {
         "number": "",
@@ -78,7 +79,8 @@
             "statusCode": "OPEN:ISSUE:EXPIRED:DONE",
             "permitType": "",
             "searchType": "permit",
-            "issuedDateFrom": null
+            "issuedDateFrom": null,
+            "issuedDateTo": null
         },
         "address": {
             "number": "",
