@@ -3,3 +3,4 @@ upload_errors_scraper_05.log
 cleaned_permits/
 permits/
 data/
+.env
