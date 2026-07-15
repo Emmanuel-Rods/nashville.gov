@@ -120,4 +120,49 @@ async function cleanFolder(inputFolder, outputFolder) {
   }
 }
 
-module.exports = { cleanFolder };
+function cleanJSON(rawJSON) {
+  const rawData = rawJSON;
+
+  // Clone the strict schema template for this specific file
+  const cleanedData = { ...NASHVILLE_SCHEMA };
+
+  // --- STEP 1: Top Level Keys ---
+  cleanedData.caseID = rawData.caseID ?? null;
+  cleanedData.permitNumber = rawData.permitNumber ?? null;
+  cleanedData.originalCaseInfo = rawData.originalCaseInfo ?? null;
+
+  // --- STEP 2: Dig into permitDetails ---
+  const permitDetails = rawData.permitDetails || {};
+
+  cleanedData.contacts = permitDetails.contacts?.value ?? null;
+  cleanedData.contractors = permitDetails.contractors?.value ?? null;
+  cleanedData.parcel = permitDetails.parcel?.value ?? null;
+  cleanedData.permit = permitDetails.permit?.value ?? null;
+
+  // --- STEP 3: The Smart Inspection Filter ---
+  const inspectionsData = permitDetails.inspection || {};
+  if (inspectionsData.value && Array.isArray(inspectionsData.value)) {
+    const filteredInspections = inspectionsData.value.filter(
+      (insp) => insp.taskType === "INSPECTION",
+    );
+
+    if (filteredInspections.length > 0) {
+      cleanedData.inspections = filteredInspections;
+    }
+  }
+
+  // --- STEP 4: The CABVALRES Quantity Filter ---
+  const quantityData = permitDetails.quantityGroup || {};
+  if (quantityData.value && Array.isArray(quantityData.value)) {
+    const filteredQuantity = quantityData.value.filter(
+      (q) => q.groupCode === "CABVALRES" || q.groupCode === "CABVALCOM",
+    );
+
+    if (filteredQuantity.length > 0) {
+      cleanedData.quantityGroup = filteredQuantity;
+    }
+  }
+
+  return cleanedData;
+}
+module.exports = { cleanFolder, cleanJSON };
