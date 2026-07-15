@@ -6,9 +6,9 @@ const path = require("path");
  * Adjust here if your permit file shape ever changes.
  */
 function extractPermitInfo(parsed, filename) {
-  const permit = parsed?.permit_data?.permit;
+  const permit = parsed?.permit_data;
   const permitId = permit?.caseID;
-  const permitNumber = permit?.caseNumber;
+  const permitNumber = permit?.caseNumber || permit.permitNumber;
   const hash = parsed?.permit_hash;
 
   if (!permitId || !hash) {
@@ -30,8 +30,8 @@ function loadIndex(indexFilePath) {
 
   const map = new Map();
   for (const entry of arr) {
-    if (!entry.permit_id) continue;
-    map.set(entry.permit_id, {
+    if (!entry.case_id) continue;
+    map.set(entry.case_id, {
       permit_number: entry.permit_number,
       data_hash: entry.data_hash,
     });
