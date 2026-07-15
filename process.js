@@ -8,6 +8,10 @@ const { getParcel } = require("./APIs/parcel.js");
 const { getPermit } = require("./APIs/permit.js");
 const { getQuantityGroup } = require("./APIs/quantity_group.js");
 
+//utils
+const { cleanJSON } = require("./utils/cleaner.js");
+const { hash } = require("./utils/hashes/create.hash.js");
+
 // Configuration
 const DELAY_MS = 1500; // 1.5 seconds delay between each case
 const OUTPUT_DIR = "./permits"; // Folder to save the individual JSON files
@@ -37,15 +41,16 @@ async function processPermitFiles(filepath) {
     const jsonData = JSON.parse(rawData);
 
     // Extract the array of cases
-    const cases = jsonData.value;
+    const cases = jsonData.value ?? jsonData;
 
     // 3. Loop through each case sequentially
     for (let i = 0; i < cases.length; i++) {
       const caseItem = cases[i];
-      const caseID = caseItem.caseID;
+      const caseID = caseItem.caseID ?? caseItem.case_id;
 
       // Fallback to caseID if permitNumber is empty/missing
-      const rawFileName = caseItem.permitNumber || String(caseID);
+      const rawFileName =
+        caseItem.permitNumber || String(caseID) || caseItem.permit_number;
       const safeFileName = sanitizeFilename(rawFileName);
       const filePath = path.join(OUTPUT_DIR, `${safeFileName}.json`);
 
@@ -74,7 +79,7 @@ async function processPermitFiles(filepath) {
         // 5. Combine the original case data with the newly fetched data
         const combinedData = {
           caseID: caseID,
-          permitNumber: caseItem.permitNumber,
+          permitNumber: caseItem.permitNumber || caseItem.permit_number,
           permitDetails: {
             contacts,
             contractors,
@@ -84,9 +89,16 @@ async function processPermitFiles(filepath) {
             quantityGroup,
           },
         };
-
-        // 6. Save directly to its own JSON file
         await fs.writeFile(filePath, JSON.stringify(combinedData, null, 2));
+        // cleaning
+        const cleanedData = cleanJSON(combinedData);
+        // hashing
+        const permit_hash = hash(cleanedData);
+
+        //merge
+        const final = { permit_data: cleanedData, permit_hash: permit_hash };
+        // 6. Save directly to its own JSON file
+        await fs.writeFile(filePath, JSON.stringify(final, null, 2));
         console.log(`✅ Successfully saved to: ${filePath}`);
       } catch (apiError) {
         console.error(
@@ -156,4 +168,4 @@ async function processEntireFolder(folderPath) {
   }
 }
 
-module.exports = { processEntireFolder };
+module.exports = { processEntireFolder, processPermitFiles };
