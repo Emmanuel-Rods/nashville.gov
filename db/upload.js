@@ -54,15 +54,27 @@ async function uploadFolder(JSON_FOLDER) {
       const fileContent = fs.readFileSync(filePath, "utf8");
       const permitData = JSON.parse(fileContent);
 
+      const permit_hash = permitData.permit_hash;
       // Extract values directly from Nashville's schema root
-      const caseId = permitData.caseID;
-      const permitNumber = permitData.permitNumber;
+      const caseId = permitData.permit_data.permit[0].caseID;
+      const permitNumber = permitData.permit_data.permit[0].caseNumber;
 
       // Safely fetch status from inner object
       let status = null;
-      if (permitData.originalCaseInfo && permitData.originalCaseInfo.status) {
-        status = permitData.originalCaseInfo.status;
+      if (
+        permitData.permit_data.permit[0] &&
+        permitData.permit_data.permit[0].status
+      ) {
+        status = permitData.permit_data.permit[0].status;
       }
+
+      console.log({
+        case_id: caseId,
+        permit_number: permitNumber,
+        status: status,
+        permit_data: permitData.permit_data,
+        data_hash: permit_hash,
+      });
 
       if (!caseId) {
         const msg = `Skipped ${file}: Missing 'caseID'`;
@@ -76,7 +88,8 @@ async function uploadFolder(JSON_FOLDER) {
         case_id: caseId,
         permit_number: permitNumber,
         status: status,
-        permit_data: permitData,
+        permit_data: permitData.permit_data,
+        data_hash: permit_hash,
       });
     } catch (err) {
       const msg = `Parse Error on ${file}: ${err.message}`;
