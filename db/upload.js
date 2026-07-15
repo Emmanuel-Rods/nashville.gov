@@ -68,14 +68,6 @@ async function uploadFolder(JSON_FOLDER) {
         status = permitData.permit_data.permit[0].status;
       }
 
-      console.log({
-        case_id: caseId,
-        permit_number: permitNumber,
-        status: status,
-        permit_data: permitData.permit_data,
-        data_hash: permit_hash,
-      });
-
       if (!caseId) {
         const msg = `Skipped ${file}: Missing 'caseID'`;
         console.warn(` [Warn] ${msg}`);
