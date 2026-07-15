@@ -2,10 +2,12 @@ const fs = require("fs");
 const path = require("path");
 const { createClient } = require("@supabase/supabase-js");
 
+require("dotenv").config();
+
 // --- Configuration ---
-const SUPABASE_URL = "https://dddsaythhlflyzuxcdha.supabase.co";
-const SUPABASE_KEY = "";
-const TABLE_NAME = "scraper_test";
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_KEY = process.env.SUPABASE_KEY;
+const TABLE_NAME = process.env.TABLE;
 
 const ERROR_LOG_FILE = "./upload_errors_scraper_05.log";
 
