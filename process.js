@@ -75,7 +75,6 @@ async function processPermitFiles(filepath) {
         const combinedData = {
           caseID: caseID,
           permitNumber: caseItem.permitNumber,
-          originalCaseInfo: caseItem,
           permitDetails: {
             contacts,
             contractors,
