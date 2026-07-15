@@ -5,7 +5,6 @@ const path = require("path");
 const NASHVILLE_SCHEMA = {
   caseID: null,
   permitNumber: null,
-  originalCaseInfo: null,
   contacts: null,
   contractors: null,
   inspections: null,
@@ -51,7 +50,6 @@ async function cleanFolder(inputFolder, outputFolder) {
         // --- STEP 1: Top Level Keys ---
         cleanedData.caseID = rawData.caseID ?? null;
         cleanedData.permitNumber = rawData.permitNumber ?? null;
-        cleanedData.originalCaseInfo = rawData.originalCaseInfo ?? null;
 
         // --- STEP 2: Dig into permitDetails ---
         const permitDetails = rawData.permitDetails || {};
@@ -129,7 +127,6 @@ function cleanJSON(rawJSON) {
   // --- STEP 1: Top Level Keys ---
   cleanedData.caseID = rawData.caseID ?? null;
   cleanedData.permitNumber = rawData.permitNumber ?? null;
-  cleanedData.originalCaseInfo = rawData.originalCaseInfo ?? null;
 
   // --- STEP 2: Dig into permitDetails ---
   const permitDetails = rawData.permitDetails || {};
