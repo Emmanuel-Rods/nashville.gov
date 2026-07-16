@@ -32,10 +32,9 @@ async function main() {
   await fetchPermits(search.searchKey);
   await processEntireFolder("data");
   //cleaning permits
-  await cleanFolder("permits", "cleaned_permits");
-  await uploadFolder("cleaned_permits");
+  await uploadFolder("permits");
   //then delete data folder
-  await deletefolders(["data", "cleaned_permits", "permits"]);
+  await deletefolders(["data", "permits"]);
 }
 
 main();
