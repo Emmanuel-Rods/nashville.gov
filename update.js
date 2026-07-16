@@ -4,18 +4,27 @@ const { processPermitFiles } = require("./process.js");
 const getDataByStatus = require("./db/getPreviousData.js");
 const { comparePermitHashes } = require("./utils/hashes/hash.compare.js");
 
-const file = "total.json"; // temp file for processing
+const statuses = ["Done", "Open", "Issued", "Cancelled"];
 
-async function main() {
-  //const file = await getDataByStatus(status);
+async function processStatus(status) {
+  const file = await getDataByStatus(status);
+
   await processPermitFiles(file);
   await comparePermitHashes(file, "permits", "DIFF_FOLDER");
-  await uploadFolder("permits");
+  await uploadFolder("DIFF_FOLDER");
+
   // then delete data folder
-  //await deletefolders(["permits"]);
+  await deletefolders(["permits", "DIFF_FOLDER"]);
 }
 
-main();
+async function main() {
+  for (const status of statuses) {
+    console.log(`Processing status: ${status}`);
+    await processStatus(status);
+  }
+}
+
+main().catch(console.error);
 
 // daily.js : Issued , done , hold
 // update.js Issued
