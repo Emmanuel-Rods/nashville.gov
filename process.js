@@ -11,6 +11,7 @@ const { getQuantityGroup } = require("./APIs/quantity_group.js");
 //utils
 const { cleanJSON } = require("./utils/cleaner.js");
 const { hash } = require("./utils/hashes/create.hash.js");
+const { canonicalize } = require("./utils/canonicalize.js");
 
 // Configuration
 const DELAY_MS = 1500; // 1.5 seconds delay between each case
@@ -50,7 +51,7 @@ async function processPermitFiles(filepath) {
 
       // Fallback to caseID if permitNumber is empty/missing
       const rawFileName =
-        caseItem.permitNumber || String(caseID) || caseItem.permit_number;
+        caseItem.permitNumber || caseItem.permit_number || String(caseID); //changed order
       const safeFileName = sanitizeFilename(rawFileName);
       const filePath = path.join(OUTPUT_DIR, `${safeFileName}.json`);
 
@@ -76,6 +77,12 @@ async function processPermitFiles(filepath) {
           getQuantityGroup(caseID),
         ]);
 
+        // short hack
+        if (caseItem.permit_number) {
+          // this means we are fetching from our database using update.js
+          caseItem.permit_number = `${permit?.value[0]?.caseType} ${caseItem.permit_number}`; // covert into db format
+        }
+
         // 5. Combine the original case data with the newly fetched data
         const combinedData = {
           caseID: caseID,
@@ -89,9 +96,9 @@ async function processPermitFiles(filepath) {
             quantityGroup,
           },
         };
-        await fs.writeFile(filePath, JSON.stringify(combinedData, null, 2));
+        // await fs.writeFile(filePath, JSON.stringify(combinedData, null, 2));
         // cleaning
-        const cleanedData = cleanJSON(combinedData);
+        const cleanedData = cleanJSON(canonicalize(combinedData));
         // hashing
         const permit_hash = hash(cleanedData);
 
