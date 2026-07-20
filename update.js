@@ -4,7 +4,7 @@ const { processPermitFiles } = require("./process.js");
 const getDataByStatus = require("./db/getPreviousData.js");
 const { comparePermitHashes } = require("./utils/hashes/hash.compare.js");
 
-const statuses = ["Done", "Open", "Issued", "Cancelled"];
+const statuses = ["Open", "Issued"];
 
 async function processStatus(status) {
   const file = await getDataByStatus(status);
