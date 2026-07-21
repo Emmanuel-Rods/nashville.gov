@@ -143,6 +143,11 @@ function cleanJSON(rawJSON) {
       (insp) => insp.taskType === "INSPECTION",
     );
 
+    // remove dyamically generated recommendedDate value
+    inspectionsData.value.forEach((inspection) => {
+      delete inspection.recommendedDate;
+    });
+
     if (filteredInspections.length > 0) {
       cleanedData.inspections = filteredInspections;
     }
